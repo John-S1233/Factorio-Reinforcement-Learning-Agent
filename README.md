@@ -25,12 +25,6 @@ This mod implements the **Q-learning** algorithm, a simple and effective model-f
    
    ![0_ZC1PGJlwSfruMxTw](https://github.com/user-attachments/assets/016b53c1-c646-422e-9bf0-9e25c4244a18)
 
-   Where:
-   - \( \alpha \) is the learning rate.
-   - \( \gamma \) is the discount factor.
-   - \( r \) is the reward received after taking action \( a \) in state \( s \).
-   - \( s' \) is the new state after the action.
-   - 
    Over time, the agent learns to take actions that maximize the cumulative reward, improving its performance in optimizing Factorio's production processes.
 
 ### Why CNNs Were Not Used
