@@ -1,4 +1,5 @@
 # Factorio Reinforcement Learning Agent Mod
+![Player_run_anim](https://github.com/user-attachments/assets/255c1e77-29fe-4760-9003-e8d031044af7)
 
 ## Overview
 
