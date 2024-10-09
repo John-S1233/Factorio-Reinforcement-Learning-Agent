@@ -23,7 +23,7 @@ This mod implements the **Q-learning** algorithm, a simple and effective model-f
 3. **Reward**: After each action, the agent receives a reward based on the result of its action. For example, if an action leads to higher production output or a more efficient resource flow, the agent receives a positive reward. Conversely, inefficient actions are penalized with negative rewards.
 4. **Learning Process**: The agent updates its Q-values using the Q-learning update rule:
    
-   ![Q-learning-8](https://github.com/user-attachments/assets/0e611969-e637-4719-b470-ec1711b2e925)
+   ![0_ZC1PGJlwSfruMxTw](https://github.com/user-attachments/assets/016b53c1-c646-422e-9bf0-9e25c4244a18)
 
    Where:
    - \( \alpha \) is the learning rate.
