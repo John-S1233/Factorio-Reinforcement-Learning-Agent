@@ -1,7 +1,6 @@
 # Factorio Reinforcement Learning Agent Mod
 
-![Untitledvideo-MadewithClipchamp2-ezgif com-crop](https://github.com/user-attachments/assets/aef47743-cc00-4382-846a-b37e710585a1)
-
+![Untitledvideo-MadewithClipchamp2-ezgif com-speed](https://github.com/user-attachments/assets/33f5be03-efdf-4532-8f3d-e54e1b4f4e98)
 
 ## Overview
 
