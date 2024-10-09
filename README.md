@@ -1,7 +1,7 @@
 # Factorio Reinforcement Learning Agent Mod
 
 ![Untitledvideo-MadewithClipchamp2-ezgif com-speed](https://github.com/user-attachments/assets/33f5be03-efdf-4532-8f3d-e54e1b4f4e98)
-*Image: Agents being trained*
+
 ## Overview
 
 This project is a Factorio mod that integrates a reinforcement learning (RL) agent into the game. The agent can learn to optimize various in-game production processes, maximizing resource gathering, building efficiency, and automation. The mod leverages Lua scripting to extract in-game data, which is used to train the RL agent.
