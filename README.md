@@ -24,8 +24,9 @@ This mod implements the **Q-learning** algorithm, a simple and effective model-f
 4. **Learning Process**: The agent updates its Q-values using the Q-learning update rule:
    
    \[
-   Q(s, a) = Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
+   Q(s, a) = Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
    \]
+
 
    Where:
    - \( \alpha \) is the learning rate.
