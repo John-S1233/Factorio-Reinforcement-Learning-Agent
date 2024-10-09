@@ -22,8 +22,9 @@ This mod implements the **Q-learning** algorithm, a simple and effective model-f
 2. **Actions**: The agent chooses from a set of actions, such as placing or adjusting machines, optimizing resource flow, or rearranging production belts. Each action affects the in-game environment.
 3. **Reward**: After each action, the agent receives a reward based on the result of its action. For example, if an action leads to higher production output or a more efficient resource flow, the agent receives a positive reward. Conversely, inefficient actions are penalized with negative rewards.
 4. **Learning Process**: The agent updates its Q-values using the Q-learning update rule:
+   ![MathSHid](https://github.com/user-attachments/assets/9983f60d-88c7-499c-a930-b7150acd6765)
+
    
-   ![Q-learning-8](https://github.com/user-attachments/assets/19887c4e-ab39-440f-a315-7e57e8086fd0)
    
    Over time, the agent learns to take actions that maximize the cumulative reward, improving its performance in optimizing Factorio's production processes.
 
