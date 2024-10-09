@@ -1,5 +1,6 @@
 # Factorio Reinforcement Learning Agent Mod
 
+![Untitledvideo-MadewithClipchamp-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/02a55e4b-73ea-4433-aabc-a108aec81822)
 
 
 ## Overview
