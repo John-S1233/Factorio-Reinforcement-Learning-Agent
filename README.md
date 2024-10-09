@@ -1,4 +1,4 @@
-# Factorio Reinforcement Learning Agent Mod
+# Factorio Reinforcement Learning Agent 
 
 ## Overview
 
