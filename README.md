@@ -1,15 +1,46 @@
-# Factorio Reinforcement Learning Agent 
+# Factorio Reinforcement Learning Agent Mod
 
 ## Overview
 
 This project is a Factorio mod that integrates a reinforcement learning (RL) agent into the game. The agent can learn to optimize various in-game production processes, maximizing resource gathering, building efficiency, and automation. The mod leverages Lua scripting to extract in-game data, which is used to train the RL agent.
+
+Due to Factorio's modding system, the use of traditional machine learning techniques like convolutional neural networks (CNNs) was not feasible, as Lua lacks the necessary machine learning libraries and computational capacity required for such models. Instead, this mod employs a simpler Q-learning algorithm that fits within Factorio's modding framework, allowing the agent to learn efficiently without external dependencies.
 
 ## Features
 
 - **Reinforcement Learning Integration**: The RL agent interacts with the Factorio environment and receives rewards based on game metrics such as production rates or resource collection.
 - **In-Game Data Extraction**: The mod collects data from the Factorio game state, such as objects, items, terrain, and other environmental features, to provide the RL agent with information for decision-making.
 - **Optimization of Production Processes**: The agent learns to control the production chains and optimize them to meet specified goals (e.g., maximizing item output or minimizing resource waste).
-  
+
+## How the RL Agent Learns (Q-Learning)
+
+### Q-Learning Algorithm
+
+This mod implements the **Q-learning** algorithm, a simple and effective model-free RL technique. Q-learning is based on the idea of learning a value function \( Q(s, a) \), which represents the expected reward for taking action \( a \) in state \( s \). The agent updates this value function over time through its interactions with the Factorio game environment.
+
+1. **State Representation**: The state \( s \) is a representation of the current in-game situation, including the available resources, the status of production lines, and the positions of machines.
+2. **Actions**: The agent chooses from a set of actions, such as placing or adjusting machines, optimizing resource flow, or rearranging production belts. Each action affects the in-game environment.
+3. **Reward**: After each action, the agent receives a reward based on the result of its action. For example, if an action leads to higher production output or a more efficient resource flow, the agent receives a positive reward. Conversely, inefficient actions are penalized with negative rewards.
+4. **Learning Process**: The agent updates its Q-values using the Q-learning update rule:
+   
+   \[
+   Q(s, a) = Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
+   \]
+
+   Where:
+   - \( \alpha \) is the learning rate.
+   - \( \gamma \) is the discount factor.
+   - \( r \) is the reward received after taking action \( a \) in state \( s \).
+   - \( s' \) is the new state after the action.
+   
+   Over time, the agent learns to take actions that maximize the cumulative reward, improving its performance in optimizing Factorio's production processes.
+
+### Why CNNs Were Not Used
+
+Although CNNs are powerful for handling complex visual data and could be useful for analyzing Factorio's intricate game world, they were not feasible in this mod due to Factorio's modding system, which runs entirely in Lua. Lua lacks the necessary libraries and computational frameworks (such as TensorFlow or PyTorch) to support deep learning models like CNNs. Moreover, Factorio's modding environment does not have access to the hardware (e.g., GPUs) that deep learning models typically require for training and inference.
+
+Therefore, Q-learning was chosen as a lightweight, effective alternative that fits well within the constraints of Factorio’s Lua-based modding system.
+
 ## File Descriptions
 
 - **control.lua**: Contains the main logic of the RL agent, responsible for extracting data from the game and sending actions based on the agent's decisions.
