@@ -1,6 +1,4 @@
 -- control.lua
-
--- Import the 'serpent' library for table serialization
 local serpent = require("serpent")
 
 -- Observation radius for nearby entities
@@ -87,7 +85,7 @@ local function delete_agents(player)
     end
     global.agents = {}
     global.agent_id_counter = 0
-    global.total_production = {} -- Reset total production
+    global.total_production = {}
     player.print("All agents have been deleted.")
 end
 
@@ -123,7 +121,6 @@ local function craft_random_item(agent)
             -- Check if the agent has the required ingredients
             for _, ingredient in pairs(recipe.ingredients) do
                 if ingredient.type ~= "item" then
-                    -- Skip recipes with fluid ingredients
                     can_craft = false
                     break
                 end
@@ -136,7 +133,6 @@ local function craft_random_item(agent)
             -- Check if the recipe produces items only
             for _, product in pairs(recipe.products) do
                 if product.type ~= "item" then
-                    -- Skip recipes with fluid products
                     can_craft = false
                     break
                 end
@@ -254,8 +250,6 @@ local function interact_with_chest(agent, action_type)
             end
         end
     elseif action_type == "view" then
-        -- View the chest's inventory (no action needed for this example)
-        -- You can choose to include chest contents in the agent's state if desired
     end
 end
 
@@ -348,7 +342,6 @@ end
 -- Function to calculate the global reward
 local function get_global_reward()
     local target_item = nil
-    -- Use any agent to get the target item (assuming all agents have the same target)
     for _, agent in pairs(global.agents) do
         target_item = agent.target_item
         break
@@ -358,13 +351,13 @@ local function get_global_reward()
     -- Get total production of the target item and its components
     local total_reward = 0
     local target_amount = global.total_production[target_item] or 0
-    total_reward = total_reward + target_amount * 2.0 -- Higher weight for target item
+    total_reward = total_reward + target_amount * 2.0 
 
     -- Get all components
     local all_components = get_all_components(target_item)
     for component_name, _ in pairs(all_components) do
         local component_amount = global.total_production[component_name] or 0
-        total_reward = total_reward + component_amount * 1.0 -- Weight for components
+        total_reward = total_reward + component_amount * 1.0 
     end
 
     -- Reset total production after calculating reward
@@ -378,14 +371,12 @@ local function get_current_state(agent)
     local character = agent.character
     if not character or not character.valid then return nil end
 
-    -- Simplify the state representation
     local position = character.position
 
     -- Inventory summary
     local inventory_contents = character.get_main_inventory().get_contents()
     local inventory_summary = {}
     for name, count in pairs(inventory_contents) do
-        -- Only consider certain key items or categories
         inventory_summary[name] = count
     end
 
@@ -419,7 +410,6 @@ local function get_current_state(agent)
         y = math.floor(position.y + 0.5),
         inventory = inventory_summary,
         nearby_entities = limited_entity_counts,
-        -- Include other state variables as needed
     }
     return state
 end
@@ -432,7 +422,7 @@ local function choose_action(agent, state)
     -- Initialize Q-values for this state if not present
     if not Q[state_key] then
         Q[state_key] = {}
-        -- Define the expanded action space
+        -- Define the action space
         local actions = {
             "move_north", "move_south", "move_east", "move_west",
             "mine", "idle",
@@ -446,7 +436,6 @@ local function choose_action(agent, state)
 
     -- Exploration vs. Exploitation
     if math.random() < agent.exploration_rate then
-        -- Explore: choose a random action
         local actions = {}
         for action, _ in pairs(Q[state_key]) do
             table.insert(actions, action)
@@ -474,11 +463,10 @@ local function update_q_table(agent, state, action, reward, next_state)
     local state_key = serpent.line(state)
     local next_state_key = serpent.line(next_state)
     local Q = agent.Q
-
-    -- Initialize Q-values for the next state if not present
+    
     if not Q[next_state_key] then
         Q[next_state_key] = {}
-        -- Define the expanded action space
+
         local actions = {
             "move_north", "move_south", "move_east", "move_west",
             "mine", "idle",
@@ -552,7 +540,6 @@ end
 local function start_training(player)
     global.training_active = true
     player.print("Training started.")
-    -- Start a repeating event every 60 ticks (1 second)
     if not global.training_event_registered then
         global.training_event_registered = true
         script.on_nth_tick(10, training_step)
@@ -711,7 +698,7 @@ script.on_event(defines.events.on_gui_click, function(event)
             -- Update target item for all agents
             for _, agent in pairs(global.agents) do
                 agent.target_item = target_item
-                agent.components = {} -- Clear components to refresh
+                agent.components = {} 
             end
             player.print("Target item updated to: " .. target_item)
         else
