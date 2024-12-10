@@ -31,7 +31,7 @@ This mod implements the **Q-learning** algorithm, a simple and effective model-f
 
 ### Why CNNs Were Not Used
 
-Although CNNs are powerful for handling complex visual data and could be useful for analyzing Factorio's intricate game world, they were not feasible in this mod due to Factorio's modding system, which runs entirely in Lua. Lua lacks the necessary libraries and computational frameworks (such as TensorFlow or PyTorch) to support deep learning models like CNNs. Moreover, Factorio's modding environment does not have access to the hardware (e.g., GPUs) that deep learning models typically require for training and inference.
+Although CNNs are powerful for handling complex visual data and could be useful for analyzing Factorio's intricate game world, they were not feasible in this mod due to Factorio's modding system, which runs entirely in Lua. Since Factorio's modding enviroment does not have access to parallel computing hardware like GPU's, training neural networks is not a feasible approach.
 
 Therefore, Q-learning was chosen as a lightweight, effective alternative that fits well within the constraints of Factorio’s Lua-based modding system.
 
